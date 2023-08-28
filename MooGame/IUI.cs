@@ -4,8 +4,8 @@
 	{
 		string EnterName();
 		bool GameOver(IPlayerData playerData);
-		void HighScore(List<IPlayerData> data, Logic logic);
+		void HighScore(List<IPlayerData> data);
 		string PlayerInput();
-		void Result(string goal, IPlayerData playerData, Logic logic);
+		bool Result(string checkResult);
 	}
 }

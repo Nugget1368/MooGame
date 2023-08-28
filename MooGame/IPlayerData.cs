@@ -5,17 +5,16 @@
 	 */
 	public interface IPlayerData
 	{
-		public string Name { get; set; }
-		public int NGames { get; }
+		string Name { get; set; }
+		int NGames { get; }
 		int GuessTotal { get; }
 		string Guess { get; }
 
 		bool Equals(object p);
 		int GetHashCode();
-		void IncreaseNumGuesses();
+		double PlayerScore(int totalGuesses, int numOfGames);
 		void ResetGuessTotal();
 		void SetGuess(string guess);
-		void SetGuessTotal(int guesses);
 		void SetName(string name);
 		void Update(int guesses);
 	}

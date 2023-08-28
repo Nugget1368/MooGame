@@ -1,5 +1,9 @@
 ﻿namespace MooGame
 {
+	/********************************************************************
+	 * Motivation: En del av UI:ns jobb är att presentera spelarstatistik,
+	 * därför tänker jag att IPlayerData får implimenteras direkt i UI:ns metoder
+	 *****************************************************************************/
 	public class ConsoleUI : IUI
 	{
 		public string EnterName()
@@ -14,16 +18,15 @@
 			return name;
 		}
 
-		public void Result(string goal, IPlayerData playerData, Logic logic)
+		public bool Result(string checkResult)
 		{
-			while(logic.CheckResult(goal, playerData.Guess) != "BBBB,")
+			Console.WriteLine(checkResult + "\n");
+			if(checkResult != "BBBB,")
 			{
-				Console.WriteLine(logic.CheckResult(goal, playerData.Guess) + "\n");
 				Console.WriteLine("Try again:");
-				playerData.IncreaseNumGuesses();
-				playerData.SetGuess(PlayerInput());
-				Console.WriteLine(playerData.Guess + "\n");
+				return false;
 			}
+			return true;
 		}
 
 		public string PlayerInput()
@@ -41,12 +44,12 @@
 			return input;
 		}
 
-		public void HighScore(List<IPlayerData> data, Logic logic)
+		public void HighScore(List<IPlayerData> data)
 		{
 			Console.WriteLine("Player   games	average");
 			foreach (PlayerData p in data)
 			{
-				Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.Name, p.NGames, logic.Average(p.GuessTotal, p.NGames)));
+				Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.Name, p.NGames, p.PlayerScore(p.GuessTotal, p.NGames)));
 			}
 		}
 

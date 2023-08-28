@@ -11,7 +11,7 @@ namespace MooGame
 		{
 
 			IUI ui = new ConsoleUI();
-			IPlayerData playerData = new PlayerData();
+			IPlayerData playerData = new PlayerData("", 0);
 			Logic logic = new Logic();
 			IFileHandler fileHandler = new FileTxtHandler();
 			
@@ -28,10 +28,14 @@ namespace MooGame
 				Console.WriteLine("For practice, number is: " + goal + "\n");
 
 				playerData.SetGuess(ui.PlayerInput());
-				ui.Result(goal, playerData, logic);
+				while (ui.Result(logic.CheckResult(goal, playerData.Guess)) != true)
+				{
+					playerData.SetGuess(ui.PlayerInput());
+				}
+				
 
 				fileHandler.SaveResult($"{playerData.Name + "#&#" + playerData.GuessTotal}", "result.txt");
-				ui.HighScore(fileHandler.showTopList("result.txt"), logic);
+				ui.HighScore(fileHandler.showTopList("result.txt"));
 
 				playOn = ui.GameOver(playerData);
 			}

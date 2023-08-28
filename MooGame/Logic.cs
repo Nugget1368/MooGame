@@ -2,10 +2,6 @@
 {
 	public class Logic
 	{
-		public double Average(int totalGuesses, int numOfGames)
-		{
-			return (double)totalGuesses / numOfGames;
-		}
 		public string makeGoal()
 		{
 			Random randomGenerator = new Random();

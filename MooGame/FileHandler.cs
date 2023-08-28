@@ -15,11 +15,8 @@
 
 		public List<IPlayerData> showTopList(string filename)
 		{
-			/* FileHandler?*/
-			//GetTopList
 			StreamReader input = new StreamReader(filename);
 
-			/* Läs in filen, konvertera till en Lista? */
 			List<IPlayerData> results = new List<IPlayerData>();
 			string line;
 			while ((line = input.ReadLine()) != null)
@@ -37,17 +34,12 @@
 				}
 			}
 
-			/* Bryt ut? -> FileUpdate?*/
-			/**********/
 			input.Close();
-			/**********/
 			return results = SortSaveFile(results);
 		}
-
 		private List<IPlayerData> SortSaveFile(List<IPlayerData> results)
 		{
-			Logic logic = new Logic();
-			results.Sort((p1, p2) => logic.Average(p1.GuessTotal, p1.NGames).CompareTo(logic.Average(p2.GuessTotal, p2.NGames)));
+			results.Sort((p1, p2) => p1.PlayerScore(p1.GuessTotal, p1.NGames).CompareTo(p2.PlayerScore(p2.GuessTotal, p2.NGames)));
 			return results;
 		}
 	}
