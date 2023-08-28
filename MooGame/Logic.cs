@@ -6,18 +6,6 @@
 		{
 			return (double)totalGuesses / numOfGames;
 		}
-		public void CheckResult(string goal, PlayerData playerData)
-		{
-			Console.WriteLine(checkBC(goal, playerData.GetGuess()) + "\n");
-			while (checkBC(goal, playerData.GetGuess()) != "BBBB,")
-			{
-				Console.WriteLine("Try again:");
-				playerData.IncreaseNumGuesses();
-				playerData.SetGuess();
-				Console.WriteLine(playerData.GetGuess() + "\n");
-				Console.WriteLine(checkBC(goal, playerData.GetGuess()) + "\n");
-			}
-		}
 		public string makeGoal()
 		{
 			Random randomGenerator = new Random();
@@ -36,7 +24,7 @@
 			}
 			return goal;
 		}
-		private string checkBC(string goal, string guess)
+		public string CheckResult(string goal, string guess)
 		{
 			int cows = 0, bulls = 0;
 			guess += "    ";     // if player entered less than 4 chars

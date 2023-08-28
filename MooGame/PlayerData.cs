@@ -3,77 +3,51 @@
 	public class PlayerData : IPlayerData
 	//-> Extrahera ett interface?
 	{
-		public string Name { get; private set; }
+		public string Name { get; set; }
 		public int NGames { get; private set; } = 1;
 		/* Gör om till Property? */
+		//public double PlayerScore { get; private set; }
+		//Se om du kan göra dessa Private sen
 		public int GuessTotal { get; private set; } = 1;
 		public string Guess { get; private set; }
 
 		/***********************/
 
-		//public PlayerData(string name, int guesses)
-		//{
-		//	this.Name = name;
-		//	NGames = 1;
-		//	GuessTotal = guesses;
-		//}
-		//????????????
-		public PlayerData()
+		public PlayerData(string name, int guesses)
 		{
+			this.Name = name;
+			NGames = 1;
+			GuessTotal = guesses;
+		}
+		public PlayerData() { }
+		//????????????
+
+		public void SetGuessTotal(int guesses)
+		{
+			GuessTotal = guesses;
 			
 		}
-		public void SetGuessTotal(int guessTotal)
-		{
-			this.GuessTotal= guessTotal;
-		}
+
 		public void SetName(string name)
 		{
 			this.Name = name;
 		}
-		public void SetName(UI ui)
-		{
-			string name = ui.EnterName();
-			this.Name = name;
 
-		}
-		public string GetName()
+		//public void SetPlayerScore()
+		//{
+		//	Logic logic= new Logic();
+		//	this.PlayerScore = logic.Average(GuessTotal, NGames);
+		//}
+		public void ResetGuessTotal()
 		{
-			return this.Name;
-		}
-		public void SetGuess(string guess)
-		{
-			this.Guess = guess;
-		}
-		public void SetGuess()
-		{
-			this.Guess = "";
-			while (this.Guess == "" || this.Guess == null)
-			{
-				this.Guess = Console.ReadLine();
-			}
-		}
-		public string GetGuess()
-		{
-			return this.Guess;
+			this.GuessTotal = 1;
 		}
 
-		public int GetGuessTotal()
-		{
-			return this.GuessTotal;
-		}
-		//////////////////////////////
 		public void Update(int guesses)
 		{
 			GuessTotal += guesses;
 			NGames++;
 		}
-
-		public void IncreaseNumGuesses()
-		{
-			this.GuessTotal += 1;
-		}
-
-
 		public override bool Equals(Object p)
 		{
 			//???????
@@ -84,6 +58,16 @@
 		public override int GetHashCode()
 		{
 			return Name.GetHashCode();
+		}
+
+		public void IncreaseNumGuesses()
+		{
+			GuessTotal++;
+		}
+
+		public void SetGuess(string guess)
+		{
+			this.Guess = guess;
 		}
 	}
 }

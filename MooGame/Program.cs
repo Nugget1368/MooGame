@@ -10,30 +10,30 @@ namespace MooGame
 		public static void Main(string[] args)
 		{
 
-			bool playOn = true;
-			UI ui = new UI();
-			PlayerData playerData = new PlayerData();
+			IUI ui = new ConsoleUI();
+			IPlayerData playerData = new PlayerData();
 			Logic logic = new Logic();
-			FileTxtHandler fileHandler = new FileTxtHandler();
-			playerData.SetName(ui);
+			IFileHandler fileHandler = new FileTxtHandler();
+			
+			bool playOn = true;
+			playerData.SetName(ui.EnterName());
 
 			while (playOn)
 			{
 				string goal = logic.makeGoal();
-				playerData.SetGuessTotal(1);
+				playerData.ResetGuessTotal();
 
 				Console.WriteLine("New game:\n");
 				//comment out or remove next line to play real games!
 				Console.WriteLine("For practice, number is: " + goal + "\n");
-				
-				playerData.SetGuess();
-				logic.CheckResult(goal, playerData);
 
-				fileHandler.SaveResult($"{playerData.GetName() + "#&#" + playerData.GetGuessTotal()}", "result.txt");
-				fileHandler.showTopList();
-				/*Bryt ut, Game Over Logic*/
+				playerData.SetGuess(ui.PlayerInput());
+				ui.Result(goal, playerData, logic);
+
+				fileHandler.SaveResult($"{playerData.Name + "#&#" + playerData.GuessTotal}", "result.txt");
+				ui.HighScore(fileHandler.showTopList("result.txt"), logic);
+
 				playOn = ui.GameOver(playerData);
-				/***************/
 			}
 		}
 	}
