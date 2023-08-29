@@ -1,10 +1,10 @@
 ﻿namespace MooGame
 {
-	public interface IUI
+	public interface IUI<T>
 	{
 		string EnterName();
-		bool GameOver(IPlayerData playerData);
-		void HighScore(List<IPlayerData> data);
+		bool GameOver(T data);
+		void HighScore(List<T> data);
 		string PlayerInput();
 		bool Result(string checkResult);
 	}

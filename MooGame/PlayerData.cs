@@ -1,4 +1,6 @@
-﻿namespace MooGame
+﻿using System.Collections;
+
+namespace MooGame
 {
 	public class PlayerData : IPlayerData
 	//-> Extrahera ett interface?

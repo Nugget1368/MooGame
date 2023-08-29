@@ -10,10 +10,10 @@ namespace MooGame
 		public static void Main(string[] args)
 		{
 
-			IUI ui = new ConsoleUI();
+			IUI<IPlayerData> ui = new ConsoleUI<IPlayerData>();
+			IFileHandler<IPlayerData> fileHandler = new FileTxtHandler<IPlayerData>();
 			IPlayerData playerData = new PlayerData("", 0);
 			Logic logic = new Logic();
-			IFileHandler fileHandler = new FileTxtHandler();
 			
 			bool playOn = true;
 			playerData.SetName(ui.EnterName());
@@ -32,7 +32,6 @@ namespace MooGame
 				{
 					playerData.SetGuess(ui.PlayerInput());
 				}
-				
 
 				fileHandler.SaveResult($"{playerData.Name + "#&#" + playerData.GuessTotal}", "result.txt");
 				ui.HighScore(fileHandler.showTopList("result.txt"));

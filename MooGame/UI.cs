@@ -1,10 +1,12 @@
-﻿namespace MooGame
+﻿using System.Collections;
+
+namespace MooGame
 {
 	/********************************************************************
 	 * Motivation: En del av UI:ns jobb är att presentera spelarstatistik,
 	 * därför tänker jag att IPlayerData får implimenteras direkt i UI:ns metoder
 	 *****************************************************************************/
-	public class ConsoleUI : IUI
+	public class ConsoleUI<T> : IUI<IPlayerData>
 	{
 		public string EnterName()
 		{
@@ -44,16 +46,18 @@
 			return input;
 		}
 
-		public void HighScore(List<IPlayerData> data)
+		public void HighScore(List<IPlayerData> playerData)
 		{
 			Console.WriteLine("Player   games	average");
-			foreach (PlayerData p in data)
+			foreach (var player in playerData)
 			{
-				Console.WriteLine(string.Format("{0,-9}{1,5:D}{2,9:F2}", p.Name, p.NGames, p.PlayerScore(p.GuessTotal, p.NGames)));
+				Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore(player.GuessTotal, player.NGames))}");
 			}
 		}
 
-		public bool GameOver(IPlayerData playerData) //Man vill visa playerScore mm. så för in hela playern i GameOver
+		//Man vill generelt visa playerScore mm. så för in hela playern i GameOver
+		//Men egentligen för just detta fall hade det räckt med GuessTotal från IPlayerData
+		public bool GameOver(IPlayerData playerData) 
 		{
 			Console.WriteLine("Correct, it took " + playerData.GuessTotal + " guesses\nContinue?");
 			if (PlayerInput().Substring(0, 1) == "n")

@@ -4,7 +4,7 @@
 	 * Gör ett uinterface där Filehandlern är anpassad för flera olika spel med andra filnamn, 
 	 * andra krav på Append. Andra sätt att skriva sparfilen?
 	 ****************************************************************************/
-	public class FileTxtHandler : IFileHandler
+	public class FileTxtHandler<T> : IFileHandler<IPlayerData>
 	{
 		public void SaveResult(string savedText, string filename)
 		{
