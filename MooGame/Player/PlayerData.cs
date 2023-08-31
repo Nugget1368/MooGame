@@ -6,7 +6,6 @@ namespace MooGame.Player
     {
         public string Name { get; set; }
         public int NGames { get; private set; } = 1;
-
         public int GuessTotal { get; private set; }
         public string Guess { get; private set; }
 
@@ -44,7 +43,6 @@ namespace MooGame.Player
         }
         public override bool Equals(object p)
         {
-            //???????
             return Name.Equals(((PlayerData)p).Name);
         }
 

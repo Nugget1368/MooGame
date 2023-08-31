@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using MooGame.Player;
+﻿using MooGame.Player;
 namespace MooGame.UI
 {
     /********************************************************************
