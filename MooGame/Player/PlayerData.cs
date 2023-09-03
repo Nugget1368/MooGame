@@ -1,54 +1,51 @@
-﻿using System.Collections;
+﻿namespace MooGame.Player;
 
-namespace MooGame.Player
+public class PlayerData : IPlayerData
 {
-    public class PlayerData : IPlayerData
+    public string Name { get; set; }
+    public int NGames { get; private set; } = 1;
+    public int GuessTotal { get; private set; }
+    public string Guess { get; private set; }
+
+    /***********************/
+
+    public PlayerData(string name, int guesses)
     {
-        public string Name { get; set; }
-        public int NGames { get; private set; } = 1;
-        public int GuessTotal { get; private set; }
-        public string Guess { get; private set; }
-
-        /***********************/
-
-        public PlayerData(string name, int guesses)
-        {
-            Name = name;
-            NGames = 1;
-            GuessTotal = guesses;
-        }
+        Name = name;
+        NGames = 1;
+        GuessTotal = guesses;
+    }
 		public PlayerData()
 		{
 			NGames = 1;
 		}
 
 		public void ResetGuessTotal()
-        {
-            GuessTotal = 0;
-        }
+    {
+        GuessTotal = 0;
+    }
 
-        public void Update(int guesses)
-        {
-            GuessTotal += guesses;
-            NGames++;
-        }
-        public void SetGuess(string guess)
-        {
-            GuessTotal++;
-            Guess = guess;
-        }
-        public double PlayerScore(int totalGuesses, int numOfGames)
-        {
-            return (double)totalGuesses / numOfGames;
-        }
-        public override bool Equals(object p)
-        {
-            return Name.Equals(((PlayerData)p).Name);
-        }
+    public void Update(int guesses)
+    {
+        GuessTotal += guesses;
+        NGames++;
+    }
+    public void SetGuess(string guess)
+    {
+        GuessTotal++;
+        Guess = guess;
+    }
+    public double PlayerScore(int totalGuesses, int numOfGames)
+    {
+        return (double)totalGuesses / numOfGames;
+    }
+    public override bool Equals(object p)
+    {
+        return Name.Equals(((PlayerData)p).Name);
+    }
 
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
-        }
+    public override int GetHashCode()
+    {
+        return Name.GetHashCode();
     }
 }

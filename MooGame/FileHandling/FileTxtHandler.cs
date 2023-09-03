@@ -19,10 +19,9 @@ namespace MooGame.FileHandling
         public List<IPlayerData> showTopList(string filename)
         {
             StreamReader input = new StreamReader(filename);
-
             List<IPlayerData> results = fileController.GetAllPlayers(input);
-
             input.Close();
+
             return results = SortSaveFile(results);
         }
         private List<IPlayerData> SortSaveFile(List<IPlayerData> results)

@@ -26,7 +26,6 @@ class PlayMooGame : IPlayGame
 
 	public void StartGame(bool playOn)
 	{
-		//PlayerData.SetName(Ui.EnterName());
 		PlayerData.Name = Ui.EnterName();
 
 		while (playOn)
