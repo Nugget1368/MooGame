@@ -1,0 +1,11 @@
+﻿using MooGame.Player;
+
+namespace MooGame.Controllers
+{
+    public interface IFileController
+    {
+        List<IPlayerData> GetAllPlayers(StreamReader input);
+		IPlayerData GetSinglePlayer(StreamReader input, int id);
+		void SavePlayer(string filename, string savedText);
+	}
+}

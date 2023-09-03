@@ -1,6 +1,6 @@
 ﻿namespace MooGame
 {
-	internal interface IPlayGame<T>
+	public interface IPlayGame
 	{
 		void StartGame(bool playOn);
 	}

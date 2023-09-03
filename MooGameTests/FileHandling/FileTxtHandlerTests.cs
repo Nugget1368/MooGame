@@ -1,4 +1,6 @@
-﻿using MooGame.FileHandling;
+﻿using MooGame.Controllers;
+using MooGame.Factories;
+using MooGame.FileHandling;
 using MooGame.Player;
 using MooGameTests.MockData;
 using System.Numerics;
@@ -10,7 +12,6 @@ namespace FileTxtHandler.Tests
 	public class FileTxtHandlerTests
 	{
 		MockFileSave saveFile = new MockFileSave(new MockPlayerData(), "TestResults.txt");
-
 		[TestMethod()]
 		public void SaveResultTest()
 		{
@@ -25,10 +26,14 @@ namespace FileTxtHandler.Tests
 		{
 			//Save some mock data to the testfile to see that everything works as it should later on
 			StreamWriter output = new StreamWriter(saveFile.FileName, append: false);
-			foreach(var data in saveFile.MockSave())
+			var mockList = saveFile.MockSave();
+			foreach(var data in mockList)
 			{
 				output.WriteLine($"{data.Name}#&#{data.GuessTotal}");
 			}
+			Assert.AreEqual("Lisa", mockList[0].Name);
+			Assert.AreEqual("Link", mockList[1].Name);
+			Assert.AreEqual("Carro", mockList[2].Name);
 			output.Close();
 		}
 
@@ -38,6 +43,33 @@ namespace FileTxtHandler.Tests
 			//Show Top Results
 			StreamReader input = new StreamReader(saveFile.FileName);
 
+			List<IPlayerData> results = ReadAllPlayers(input);
+
+			input.Close();
+			results = SortSaveFile(results);
+			foreach (MockPlayerData playerData in results)
+			{
+				Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", playerData.Name, playerData.NGames, playerData.PlayerScore(playerData.GuessTotal, playerData.NGames))}");
+			}
+
+			Assert.AreEqual("Lisa", results[0].Name);
+			Assert.AreEqual("Link", results[1].Name);
+			Assert.AreEqual("Carro", results[2].Name);
+			Assert.AreEqual("TestObject", results[3].Name);
+			Assert.AreEqual("Harry Potter", results[4].Name);
+			Assert.AreEqual("Nugget", results[5].Name);
+			Assert.AreEqual("Johnny Bravo", results[6].Name);
+
+
+		}
+		private List<IPlayerData> SortSaveFile(List<IPlayerData> results)
+		{
+			results.Sort((p1, p2) => p1.PlayerScore(p1.GuessTotal, p1.NGames).CompareTo(p2.PlayerScore(p2.GuessTotal, p2.NGames)));
+			return results;
+		}
+
+		private List<IPlayerData> ReadAllPlayers(StreamReader input)
+		{
 			List<IPlayerData> results = new List<IPlayerData>();
 			string line;
 			while ((line = input.ReadLine()) != null)
@@ -54,16 +86,6 @@ namespace FileTxtHandler.Tests
 					results[pos].Update(playerData.GuessTotal);
 				}
 			}
-
-			input.Close();
-			results = SortSaveFile(results);
-			foreach (MockPlayerData playerData in results)
-			{
-				Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", playerData.Name, playerData.NGames, playerData.PlayerScore(playerData.GuessTotal, playerData.NGames))}");		}
-			}
-		private List<IPlayerData> SortSaveFile(List<IPlayerData> results)
-		{
-			results.Sort((p1, p2) => p1.PlayerScore(p1.GuessTotal, p1.NGames).CompareTo(p2.PlayerScore(p2.GuessTotal, p2.NGames)));
 			return results;
 		}
 	}

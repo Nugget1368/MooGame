@@ -17,12 +17,12 @@ namespace MooGame.Player
             NGames = 1;
             GuessTotal = guesses;
         }
-        public void SetName(string name)
-        {
-            Name = name;
-        }
+		public PlayerData()
+		{
+			NGames = 1;
+		}
 
-        public void ResetGuessTotal()
+		public void ResetGuessTotal()
         {
             GuessTotal = 0;
         }

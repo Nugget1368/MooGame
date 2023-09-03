@@ -1,4 +1,5 @@
-﻿using MooGame.FileHandling;
+﻿using MooGame.Factories;
+using MooGame.FileHandling;
 using MooGame.Player;
 using MooGame.UI;
 
@@ -7,9 +8,7 @@ class MainClass
 {
 	public static void Main(string[] args)
 	{
-		IUI<IPlayerData> ui = new ConsoleUI<IPlayerData>();
-		IFileHandler<IPlayerData> fileHandler = new FileTxtHandler<IPlayerData>();
-		IPlayGame<IPlayerData> playGame = new PlayGame<IPlayerData>(fileHandler, ui);
+		IPlayGame playGame = Factory.CreateGame();
 
 		bool playOn = true;
 		playGame.StartGame(playOn);

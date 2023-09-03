@@ -11,7 +11,7 @@ namespace MooGame.Player.Tests
 		[TestMethod()]
 		public void SetNameTest()
 		{
-			playerData.SetName("Super Mario");
+			playerData.Name = "Super Mario";
 			Assert.AreEqual("Super Mario", playerData.Name);
 		}
 

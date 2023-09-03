@@ -1,4 +1,5 @@
-﻿using MooGame.FileHandling;
+﻿using MooGame.Factories;
+using MooGame.FileHandling;
 using MooGame.Logistics;
 using MooGame.Player;
 using MooGame.UI;
@@ -9,23 +10,24 @@ namespace MooGame;
  * Vi för in UI och FileHanlder i parametern för att det är sådant som vi högst troligen kan vilja byta ut
  * till t.ex ett annat form av UI (WPF-Forms) eller en annan FileHandler (JSON)
  *********************************************************************************************************/
-class PlayGame<T> : IPlayGame<IPlayerData>
+class PlayMooGame : IPlayGame
 {
-	IFileHandler<IPlayerData> FileHandler;
-	IUI<IPlayerData> Ui;
+	IFileHandler FileHandler;
+	IUI Ui;
 	IPlayerData PlayerData;
 	Logic logic;
-	public PlayGame(IFileHandler<IPlayerData> fileHandler, IUI<IPlayerData> ui)
+	public PlayMooGame()
 	{
-		this.FileHandler = fileHandler;
-		this.Ui = ui;
-		this.PlayerData = new PlayerData("", 0);
-		this.logic = new Logic();
+		this.FileHandler = Factory.CreateFileHandler();
+		this.Ui = Factory.CreateUI();
+		this.PlayerData = Factory.CreatePlayerData();
+		this.logic = Factory.CreateLogic();
 	}
 
 	public void StartGame(bool playOn)
 	{
-		PlayerData.SetName(Ui.EnterName());
+		//PlayerData.SetName(Ui.EnterName());
+		PlayerData.Name = Ui.EnterName();
 
 		while (playOn)
 		{

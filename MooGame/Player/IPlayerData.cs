@@ -15,7 +15,6 @@
         double PlayerScore(int totalGuesses, int numOfGames);
         void ResetGuessTotal();
         void SetGuess(string guess);
-        void SetName(string name);
         void Update(int guesses);
     }
 }

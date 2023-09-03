@@ -1,8 +1,10 @@
-﻿namespace MooGame.FileHandling
+﻿using MooGame.Player;
+
+namespace MooGame.FileHandling
 {
-    public interface IFileHandler<T>
+    public interface IFileHandler
     {
         void SaveResult(string savedText, string filename);
-        List<T> showTopList(string filename);
+        List<IPlayerData> showTopList(string filename);
     }
 }

@@ -18,7 +18,7 @@ public class ConsoleUITest
             Console.WriteLine("Enter your user name:\n");
             name = "Tilde den Vilde II";
         }
-        mockPlayer.SetName(name);
+        mockPlayer.Name = name;
         Assert.AreEqual("Tilde den Vilde II", mockPlayer.Name);
     }
 

@@ -5,7 +5,7 @@ namespace MooGame.UI
 	 * Motivation: En del av UI:ns jobb är att presentera spelarstatistik,
 	 * därför tänker jag att IPlayerData får implimenteras direkt i UI:ns metoder
 	 *****************************************************************************/
-    public class ConsoleUI<T> : IUI<IPlayerData>
+    public class ConsoleUI : IUI
     {
         public string EnterName()
         {
