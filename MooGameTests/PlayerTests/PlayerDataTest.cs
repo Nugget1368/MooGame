@@ -1,10 +1,10 @@
-﻿using MooGame.Controllers;
+﻿using MooGame.Extenstions;
 using MooGameTests.MockData;
 
 
 namespace MooGame.Player.Tests
 {
-	[TestClass()]
+    [TestClass()]
 	public class PlayerDataTest
 	{
 		IPlayerData playerData = new MockPlayerData();

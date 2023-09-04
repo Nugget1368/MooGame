@@ -5,7 +5,6 @@
  * Vi minskar risken för att råka ha sönder programmet när
  * vi vill ändra något.
  ***********************************************************/
-using MooGame.Controllers;
 using MooGame.FileHandling;
 using MooGame.Logistics;
 using MooGame.Player;
@@ -39,8 +38,4 @@ public static class Factory
         return new MooGameLogic();
     }
 
-    public static IFileController CreateFileController()
-    {
-        return new TxtFileController();
-    }
 }

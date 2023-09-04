@@ -1,4 +1,5 @@
 ﻿using MooGame.Controllers;
+using MooGame.Extenstions;
 using MooGame.Factories;
 using MooGame.Player;
 
@@ -10,7 +11,7 @@ namespace MooGame.FileHandling
 	 ****************************************************************************/
     public class FileTxtHandler : IFileHandler
     {
-		IFileController fileController = Factory.CreateFileController();
+		IFileController fileController = ControllerFactory.CreateFileController();
         public void SaveResult(string savedText, string filename)
         {
             fileController.SavePlayer(savedText, filename);

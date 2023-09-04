@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MooGame.Controllers;
+using MooGame.Extenstions;
 using MooGame.Player;
 using MooGameTests.MockData;
 
