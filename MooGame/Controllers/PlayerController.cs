@@ -17,14 +17,14 @@ namespace MooGame.Controllers
 				return instance;
 			}
 		}
-		public void SetName(IPlayerData player, IUI ui)
+		public void SetName(IPlayerData player, string name)
 		{
-			player.Name = ui.EnterName();
+			player.Name = name;
 		}
 
-		public void SetGuess(IPlayerData player, IUI ui)
+		public void SetGuess(IPlayerData player, string guess)
 		{
-			player.SetGuess(ui.PlayerInput());
+			player.SetGuess(guess);
 		}
 
 		public double PlayerScore(IPlayerData player)

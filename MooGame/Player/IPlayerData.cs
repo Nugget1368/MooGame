@@ -1,8 +1,5 @@
 ﻿namespace MooGame.Player
 {
-    /*
-	 * Kan vi göra en allmän PlayerInfo??
-	 */
     public interface IPlayerData
     {
         string Name { get; set; }

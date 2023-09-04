@@ -1,7 +1,5 @@
-﻿namespace MooGame
+﻿namespace MooGame;
+public interface IPlayGame
 {
-	public interface IPlayGame
-	{
-		void StartGame(bool playOn);
-	}
+	void StartGame(bool playOn);
 }

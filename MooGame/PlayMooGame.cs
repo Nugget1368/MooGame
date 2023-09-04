@@ -28,7 +28,7 @@ class PlayMooGame : IPlayGame
 	public void StartGame(bool playOn)
 	{
 		string saveFile = "result.txt";
-		PlayerData.SetName(Ui);
+		PlayerData.SetName(Ui.EnterName());
 
 		while (playOn)
 		{
@@ -39,10 +39,10 @@ class PlayMooGame : IPlayGame
 			//comment out or remove next line to play real games!
 			Console.WriteLine("For practice, number is: " + goal + "\n");
 
-			PlayerData.SetGuess(Ui);
+			PlayerData.SetGuess(Ui.PlayerInput());
 			while (Ui.Result(logic.CheckResult(goal, PlayerData.Guess)) != true)
 			{
-				PlayerData.SetGuess(Ui);
+				PlayerData.SetGuess(Ui.PlayerInput());
 			}
 
 			string textSave = $"{PlayerData.Name + "#&#" + PlayerData.GuessTotal}";

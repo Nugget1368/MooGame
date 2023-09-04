@@ -7,8 +7,6 @@ public class PlayerData : IPlayerData
     public int GuessTotal { get; private set; }
     public string Guess { get; private set; }
 
-    /***********************/
-
     public PlayerData(string name, int guesses)
     {
         Name = name;
