@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MooGame.Controllers;
 using MooGame.Player;
 using MooGameTests.MockData;
 
@@ -59,8 +60,8 @@ public class ConsoleUITest
 		Console.WriteLine("Player   games	average");
 		foreach (var player in playerData)
 		{
-			Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", "TestObject", 1, 4.00)}", $"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore(player.GuessTotal, player.NGames))}");
-			Assert.AreEqual($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", "TestObject", 1, 4.00)}", $"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore(player.GuessTotal, player.NGames))}");
+			Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", "TestObject", 1, 4.00)}", $"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore())}");
+			Assert.AreEqual($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", "TestObject", 1, 4.00)}", $"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore())}");
 
 		}
 	}

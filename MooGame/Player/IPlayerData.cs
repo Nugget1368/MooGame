@@ -12,7 +12,6 @@
 
         bool Equals(object p);
         int GetHashCode();
-        double PlayerScore(int totalGuesses, int numOfGames);
         void ResetGuessTotal();
         void SetGuess(string guess);
         void Update(int guesses);

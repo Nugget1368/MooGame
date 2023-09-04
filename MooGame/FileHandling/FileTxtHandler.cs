@@ -26,7 +26,7 @@ namespace MooGame.FileHandling
         }
         private List<IPlayerData> SortSaveFile(List<IPlayerData> results)
         {
-            results.Sort((p1, p2) => p1.PlayerScore(p1.GuessTotal, p1.NGames).CompareTo(p2.PlayerScore(p2.GuessTotal, p2.NGames)));
+            results.Sort((p1, p2) => p1.PlayerScore().CompareTo(p2.PlayerScore()));
             return results;
         }		
 	}

@@ -1,4 +1,5 @@
-﻿using MooGameTests.MockData;
+﻿using MooGame.Controllers;
+using MooGameTests.MockData;
 
 
 namespace MooGame.Player.Tests
@@ -36,7 +37,7 @@ namespace MooGame.Player.Tests
 		public void PlayerScoreTest()
 		{
 			playerData.Update(2);
-			Assert.AreEqual(3, playerData.PlayerScore(playerData.GuessTotal, playerData.NGames));
+			Assert.AreEqual(3, playerData.PlayerScore());
 		}
 	}
 }

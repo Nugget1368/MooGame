@@ -1,4 +1,5 @@
-﻿using MooGame.Factories;
+﻿using MooGame.Controllers;
+using MooGame.Factories;
 using MooGame.FileHandling;
 using MooGame.Logistics;
 using MooGame.Player;
@@ -15,7 +16,7 @@ class PlayMooGame : IPlayGame
 	IFileHandler FileHandler;
 	IUI Ui;
 	IPlayerData PlayerData;
-	Logic logic;
+	MooGameLogic logic;
 	public PlayMooGame()
 	{
 		this.FileHandler = Factory.CreateFileHandler();
@@ -26,7 +27,8 @@ class PlayMooGame : IPlayGame
 
 	public void StartGame(bool playOn)
 	{
-		PlayerData.Name = Ui.EnterName();
+		string saveFile = "result.txt";
+		PlayerData.SetName(Ui);
 
 		while (playOn)
 		{
@@ -36,15 +38,16 @@ class PlayMooGame : IPlayGame
 			Console.WriteLine("New game:\n");
 			//comment out or remove next line to play real games!
 			Console.WriteLine("For practice, number is: " + goal + "\n");
-			
-			PlayerData.SetGuess(Ui.PlayerInput());
+
+			PlayerData.SetGuess(Ui);
 			while (Ui.Result(logic.CheckResult(goal, PlayerData.Guess)) != true)
 			{
-				PlayerData.SetGuess(Ui.PlayerInput());
+				PlayerData.SetGuess(Ui);
 			}
 
-			FileHandler.SaveResult($"{PlayerData.Name + "#&#" + PlayerData.GuessTotal}", "result.txt");
-			Ui.HighScore(FileHandler.showTopList("result.txt"));
+			string textSave = $"{PlayerData.Name + "#&#" + PlayerData.GuessTotal}";
+			FileHandler.SaveResult(textSave, saveFile);
+			Ui.HighScore(FileHandler.showTopList(saveFile));
 
 			playOn = Ui.GameOver(PlayerData);
 		}

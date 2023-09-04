@@ -1,4 +1,5 @@
-﻿using MooGame.Player;
+﻿using MooGame.Controllers;
+using MooGame.Player;
 namespace MooGame.UI;
 
 /********************************************************************
@@ -44,7 +45,7 @@ public class ConsoleUI : IUI
         Console.WriteLine("Player   games	average");
         foreach (var player in playerData)
         {
-            Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore(player.GuessTotal, player.NGames))}");
+            Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore())}");
         }
     }
 

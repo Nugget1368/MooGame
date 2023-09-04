@@ -15,12 +15,12 @@ public class PlayerData : IPlayerData
         NGames = 1;
         GuessTotal = guesses;
     }
-		public PlayerData()
-		{
-			NGames = 1;
-		}
+	public PlayerData()
+	{
+		NGames = 1;
+	}
 
-		public void ResetGuessTotal()
+	public void ResetGuessTotal()
     {
         GuessTotal = 0;
     }
@@ -34,10 +34,6 @@ public class PlayerData : IPlayerData
     {
         GuessTotal++;
         Guess = guess;
-    }
-    public double PlayerScore(int totalGuesses, int numOfGames)
-    {
-        return (double)totalGuesses / numOfGames;
     }
     public override bool Equals(object p)
     {

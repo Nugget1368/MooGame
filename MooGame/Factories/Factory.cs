@@ -34,9 +34,9 @@ public static class Factory
         return new PlayMooGame();
     }
 
-    public static Logic CreateLogic()
+    public static MooGameLogic CreateLogic()
     {
-        return new Logic();
+        return new MooGameLogic();
     }
 
     public static IFileController CreateFileController()
