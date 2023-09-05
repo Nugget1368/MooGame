@@ -15,7 +15,7 @@ class PlayMooGame : IPlayGame
 {
 	IFileHandler FileHandler;
 	IUI Ui;
-	IPlayerData PlayerData;
+	IPlayer PlayerData;
 	MooGameLogic logic;
 	public PlayMooGame()
 	{
@@ -45,9 +45,9 @@ class PlayMooGame : IPlayGame
 				PlayerData.SetGuess(Ui.PlayerInput());
 			}
 
-			string textSave = $"{PlayerData.Name + "#&#" + PlayerData.GuessTotal}";
+			string textSave = $"{PlayerData.Name + "#&#" + PlayerData.NumOfGuesses}";
 			FileHandler.SaveResult(textSave, saveFile);
-			Ui.HighScore(FileHandler.showTopList(saveFile));
+			Ui.HighScore(FileHandler.ShowTopList(saveFile));
 
 			playOn = Ui.GameOver(PlayerData);
 		}

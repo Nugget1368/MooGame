@@ -7,28 +7,28 @@ using System.Threading.Tasks;
 
 namespace MooGameTests.MockData
 {
-	internal class MockPlayerData : IPlayerData
+	internal class MockPlayerData : IPlayer
 	{
 		public string Name { get; set; }
 
-		public int NGames { get; set; }
+		public int NumOfGames { get; set; }
 
-		public int GuessTotal { get; set; }
+		public int NumOfGuesses { get; set; }
 
 		public string Guess { get; set; }
 
 		public MockPlayerData() 
 		{
 			this.Name = "TestObject";
-			NGames = 1;
-			GuessTotal = 4;
+			NumOfGames = 1;
+			NumOfGuesses = 4;
 			Guess = "TestGuess";
 		}
 		public MockPlayerData(string name, int guesses)
 		{
 			Name = name;
-			NGames = 1;
-			GuessTotal = guesses;
+			NumOfGames = 1;
+			NumOfGuesses = guesses;
 			Guess = "TestGuess";
 		}
 
@@ -39,12 +39,12 @@ namespace MooGameTests.MockData
 
 		public void ResetGuessTotal()
 		{
-			GuessTotal = 0;
+			NumOfGuesses = 0;
 		}
 
 		public void SetGuess(string guess)
 		{
-			GuessTotal++;
+			NumOfGuesses++;
 			this.Guess= guess;
 		}
 
@@ -55,8 +55,8 @@ namespace MooGameTests.MockData
 
 		public void Update(int guesses)
 		{
-			GuessTotal += guesses;
-			NGames++;
+			NumOfGuesses += guesses;
+			NumOfGames++;
 		}
 	}
 }

@@ -12,17 +12,17 @@ public class FileTxtHandler : IFileHandler
         fileController.SavePlayer(savedText, filename);
 		}
 
-    public List<IPlayerData> showTopList(string filename)
+    public List<IPlayer> ShowTopList(string filename)
     {
         StreamReader input = new StreamReader(filename);
-        List<IPlayerData> results = fileController.GetAllPlayers(input);
+        List<IPlayer> results = fileController.GetAllPlayers(input);
         input.Close();
 
         return results = SortSaveFile(results);
     }
-    private List<IPlayerData> SortSaveFile(List<IPlayerData> results)
+    private List<IPlayer> SortSaveFile(List<IPlayer> results)
     {
         results.Sort((p1, p2) => p1.PlayerScore().CompareTo(p2.PlayerScore()));
         return results;
     }		
-	}
+}

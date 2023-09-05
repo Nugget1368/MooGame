@@ -1,41 +1,41 @@
 ﻿namespace MooGame.Player;
 
-public class PlayerData : IPlayerData
+public class MooPlayer : IPlayer
 {
     public string Name { get; set; }
-    public int NGames { get; private set; } = 1;
-    public int GuessTotal { get; private set; }
+    public int NumOfGames { get; private set; } = 1;
+    public int NumOfGuesses { get; private set; }
     public string Guess { get; private set; }
 
-    public PlayerData(string name, int guesses)
+    public MooPlayer(string name, int guesses)
     {
         Name = name;
-        NGames = 1;
-        GuessTotal = guesses;
+		NumOfGames = 1;
+		NumOfGuesses = guesses;
     }
-	public PlayerData()
+	public MooPlayer()
 	{
-		NGames = 1;
+		NumOfGames = 1;
 	}
 
 	public void ResetGuessTotal()
     {
-        GuessTotal = 0;
+		NumOfGuesses = 0;
     }
 
     public void Update(int guesses)
     {
-        GuessTotal += guesses;
-        NGames++;
+        NumOfGuesses += guesses;
+        NumOfGames++;
     }
     public void SetGuess(string guess)
     {
-        GuessTotal++;
+        NumOfGuesses++;
         Guess = guess;
     }
     public override bool Equals(object p)
     {
-        return Name.Equals(((PlayerData)p).Name);
+        return Name.Equals(((MooPlayer)p).Name);
     }
 
     public override int GetHashCode()

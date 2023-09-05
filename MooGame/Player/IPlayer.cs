@@ -1,10 +1,10 @@
 ﻿namespace MooGame.Player
 {
-    public interface IPlayerData
+    public interface IPlayer
     {
         string Name { get; set; }
-        int NGames { get; }
-        int GuessTotal { get; }
+        int NumOfGames { get; }
+        int NumOfGuesses { get; }
         string Guess { get; }
 
         bool Equals(object p);

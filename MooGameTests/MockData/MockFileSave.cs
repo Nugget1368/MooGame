@@ -12,15 +12,15 @@ namespace MooGameTests.MockData
 		public string FileName { get; set; }
 		public string SavedText { get; set; }
 
-		public MockFileSave(IPlayerData mockPlayer, string filename)
+		public MockFileSave(IPlayer mockPlayer, string filename)
 		{
 			this.FileName = filename;
-			SavedText = mockPlayer.Name + "#&#" + mockPlayer.GuessTotal;
+			SavedText = mockPlayer.Name + "#&#" + mockPlayer.NumOfGuesses;
 		}
 		[TestMethod]
-		public List<IPlayerData> MockSave()
+		public List<IPlayer> MockSave()
 		{
-			List<IPlayerData> mockPlayers = new List<IPlayerData>();
+			List<IPlayer> mockPlayers = new List<IPlayer>();
 			List<string> names = new List<string> { "Lisa", "Link", "Carro", "Harry Potter", "Nugget", "Johnny Bravo" };
 			for (int x = 0; x < names.Count; x++)
 			{

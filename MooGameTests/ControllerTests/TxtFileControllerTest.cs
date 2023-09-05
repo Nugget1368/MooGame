@@ -11,20 +11,20 @@ namespace MooGameTests.ControllerTests
 	[TestClass]
 	public class TxtFileControllerTest
 	{
-		MockFileSave mockFile = new MockFileSave(new PlayerData("Bowser", 5), "TestResults.txt");
-		List<IPlayerData> mockList = new List<IPlayerData>();
+		MockFileSave mockFile = new MockFileSave(new MooPlayer("Bowser", 5), "TestResults.txt");
+		List<IPlayer> mockList = new List<IPlayer>();
 		[TestMethod]
 		public void GetSinglePlayer()
 		{
 			StreamReader input = new StreamReader(mockFile.FileName);
 			int id = 0;
 
-			List<IPlayerData> results = new List<IPlayerData>();
+			List<IPlayer> results = new List<IPlayer>();
 			string line;
 			while ((line = input.ReadLine()) != null)
 			{
 				string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
-				IPlayerData playerData = new PlayerData(nameAndScore[0], Convert.ToInt32(nameAndScore[1]));
+				IPlayer playerData = new MooPlayer(nameAndScore[0], Convert.ToInt32(nameAndScore[1]));
 				int pos = results.IndexOf(playerData);
 				if (pos < 0)
 				{
@@ -32,7 +32,7 @@ namespace MooGameTests.ControllerTests
 				}
 				else
 				{
-					results[pos].Update(playerData.GuessTotal);
+					results[pos].Update(playerData.NumOfGuesses);
 				}
 			}
 			//return results[id];

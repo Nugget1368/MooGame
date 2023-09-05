@@ -13,9 +13,9 @@ using MooGame.UI;
 namespace MooGame.Factories;
 public static class Factory
 {
-    public static IPlayerData CreatePlayerData()
+    public static IPlayer CreatePlayerData()
     {
-        return new PlayerData();
+        return new MooPlayer();
     }
 
     public static IUI CreateUI()

@@ -5,8 +5,8 @@ namespace MooGame.Controllers
 {
 	public interface IPlayerController
 	{
-		double PlayerScore(IPlayerData player);
-		void SetGuess(IPlayerData player, string guess);
-		void SetName(IPlayerData player, string name);
+		double PlayerScore(IPlayer player);
+		void SetGuess(IPlayer player, string guess);
+		void SetName(IPlayer player, string name);
 	}
 }

@@ -3,14 +3,14 @@
 namespace MooGame.Controllers;
 public class TxtFileController : IFileController
 {
-	public IPlayerData GetSinglePlayer(StreamReader input, int id)
+	public IPlayer GetSinglePlayer(StreamReader input, int id)
 	{
-		List<IPlayerData> results = new List<IPlayerData>();
+		List<IPlayer> results = new List<IPlayer>();
 		string line;
 		while ((line = input.ReadLine()) != null)
 		{
 			string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
-			IPlayerData playerData = new PlayerData(nameAndScore[0], Convert.ToInt32(nameAndScore[1]));
+			IPlayer playerData = new MooPlayer(nameAndScore[0], Convert.ToInt32(nameAndScore[1]));
 			int pos = results.IndexOf(playerData);
 			if (pos < 0)
 			{
@@ -18,19 +18,19 @@ public class TxtFileController : IFileController
 			}
 			else
 			{
-				results[pos].Update(playerData.GuessTotal);
+				results[pos].Update(playerData.NumOfGuesses);
 			}
 		}
 		return results[id];
 	}
-	public List<IPlayerData> GetAllPlayers(StreamReader input)
+	public List<IPlayer> GetAllPlayers(StreamReader input)
     {
-        List<IPlayerData> results = new List<IPlayerData>();
+        List<IPlayer> results = new List<IPlayer>();
         string line;
         while ((line = input.ReadLine()) != null)
         {
             string[] nameAndScore = line.Split(new string[] { "#&#" }, StringSplitOptions.None);
-            IPlayerData playerData = new PlayerData(nameAndScore[0], Convert.ToInt32(nameAndScore[1]));
+            IPlayer playerData = new MooPlayer(nameAndScore[0], Convert.ToInt32(nameAndScore[1]));
             int pos = results.IndexOf(playerData);
             if (pos < 0)
             {
@@ -38,7 +38,7 @@ public class TxtFileController : IFileController
             }
             else
             {
-                results[pos].Update(playerData.GuessTotal);
+                results[pos].Update(playerData.NumOfGuesses);
             }
         }
         return results;

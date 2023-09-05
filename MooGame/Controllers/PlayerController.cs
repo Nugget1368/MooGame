@@ -17,19 +17,19 @@ namespace MooGame.Controllers
 				return instance;
 			}
 		}
-		public void SetName(IPlayerData player, string name)
+		public void SetName(IPlayer player, string name)
 		{
 			player.Name = name;
 		}
 
-		public void SetGuess(IPlayerData player, string guess)
+		public void SetGuess(IPlayer player, string guess)
 		{
 			player.SetGuess(guess);
 		}
 
-		public double PlayerScore(IPlayerData player)
+		public double PlayerScore(IPlayer player)
 		{
-			return (double)player.GuessTotal / player.NGames;
+			return (double)player.NumOfGuesses / player.NumOfGames;
 		}
 	}
 }

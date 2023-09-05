@@ -7,7 +7,7 @@ namespace MooGame.Player.Tests
     [TestClass()]
 	public class PlayerDataTest
 	{
-		IPlayerData playerData = new MockPlayerData();
+		IPlayer playerData = new MockPlayerData();
 		
 		[TestMethod()]
 		public void SetNameTest()
@@ -21,16 +21,16 @@ namespace MooGame.Player.Tests
 		{
 			playerData.SetGuess("1234");
 			Assert.AreEqual("1234", playerData.Guess);
-			Assert.AreEqual(5, playerData.GuessTotal);
+			Assert.AreEqual(5, playerData.NumOfGuesses);
 		}
 
 		[TestMethod()]
 		public void UpdateTest()
 		{
-			Assert.AreEqual(4, playerData.GuessTotal);
+			Assert.AreEqual(4, playerData.NumOfGuesses);
 			playerData.Update(1);
-			Assert.AreEqual(5, playerData.GuessTotal);
-			Assert.AreEqual(2, playerData.NGames);
+			Assert.AreEqual(5, playerData.NumOfGuesses);
+			Assert.AreEqual(2, playerData.NumOfGames);
 		}
 
 		[TestMethod()]

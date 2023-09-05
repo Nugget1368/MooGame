@@ -8,7 +8,7 @@ namespace MooGameTests.UITests;
 [TestClass()]
 public class ConsoleUITest
 {
-    IPlayerData mockPlayer = new MockPlayerData();
+    IPlayer mockPlayer = new MockPlayerData();
     [TestMethod()]
     public void EnterNameTest()
     {
@@ -52,7 +52,7 @@ public class ConsoleUITest
     [TestMethod()]
     public void HighScoreTest()
     {
-		List<IPlayerData> playerData = new List<IPlayerData>();
+		List<IPlayer> playerData = new List<IPlayer>();
 		for (int x = 0; x < 5; x++)
 		{
 			playerData.Add(new MockPlayerData());
@@ -60,8 +60,8 @@ public class ConsoleUITest
 		Console.WriteLine("Player   games	average");
 		foreach (var player in playerData)
 		{
-			Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", "TestObject", 1, 4.00)}", $"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore())}");
-			Assert.AreEqual($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", "TestObject", 1, 4.00)}", $"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NGames, player.PlayerScore())}");
+			Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", "TestObject", 1, 4.00)}", $"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NumOfGames, player.PlayerScore())}");
+			Assert.AreEqual($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", "TestObject", 1, 4.00)}", $"{string.Format("{0,-9}{1,5:D}{2,9:F2}", player.Name, player.NumOfGames, player.PlayerScore())}");
 
 		}
 	}
@@ -70,7 +70,7 @@ public class ConsoleUITest
     public void GameOverTestNo()
     {
 		string input = "no I don't want to";
-		Console.WriteLine("Correct, it took " + mockPlayer.GuessTotal + " guesses\nContinue?");
+		Console.WriteLine("Correct, it took " + mockPlayer.NumOfGuesses + " guesses\nContinue?");
 		if (input.Substring(0, 1) == "n")
 		{
 			Console.WriteLine("No");
@@ -86,7 +86,7 @@ public class ConsoleUITest
 	public void GameOverTestYes()
 	{
 		string input = "Yes I'd love to!";
-		Console.WriteLine("Correct, it took " + mockPlayer.GuessTotal + " guesses\nContinue?");
+		Console.WriteLine("Correct, it took " + mockPlayer.NumOfGuesses + " guesses\nContinue?");
 		if (input.Substring(0, 1) == "n")
 		{
 			Console.WriteLine("No");
