@@ -26,7 +26,7 @@ public class ConsoleUI : IUI
         return true;
     }
 
-    public string PlayerInput() //Gör metod-namnert tydligare, ex. CheckPlayeRInput nåt sånt
+    public string PlayerInput()
     {
         string input = "";
         while (input == "" || input == null)
@@ -45,7 +45,7 @@ public class ConsoleUI : IUI
     }
 
     //Man vill generelt visa playerScore mm. så för in hela playern i GameOver
-    //Men egentligen för just detta fall hade det räckt med GuessTotal från IPlayerData
+    //Men egentligen för just detta fall hade det räckt med GuessTotal från IPlayer
     public bool GameOver(IPlayer playerData)
     {
         Console.WriteLine("Correct, it took " + playerData.NumOfGuesses + " guesses\nContinue?");

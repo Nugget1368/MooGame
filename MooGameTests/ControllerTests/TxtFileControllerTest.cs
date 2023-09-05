@@ -12,7 +12,6 @@ namespace MooGameTests.ControllerTests
 	public class TxtFileControllerTest
 	{
 		MockFileSave mockFile = new MockFileSave(new MooPlayer("Bowser", 5), "TestResults.txt");
-		List<IPlayer> mockList = new List<IPlayer>();
 		[TestMethod]
 		public void GetSinglePlayer()
 		{

@@ -30,7 +30,7 @@ namespace MooGame.Logistics.Tests
 			string goal = randomNum.RandomTestNum(maxNum);
 			string result = "";
 			string guess;
-			//Du kan se att det krävdes flera omgångar för att det skulle bli rätt
+			//Du kan se i Output att det krävdes flera omgångar för att det skulle bli rätt
 			int numOfGuesses = 0;
 			
 			while(result != "BBBB,")
@@ -68,7 +68,7 @@ namespace MooGame.Logistics.Tests
 			string goal = randomNum.RandomTestNum(maxNum);
 			string result = "";
 			string guess;
-			//Du kan se att det krävdes flera omgångar för att det skulle bli rätt
+			//Du kan se i Output att det krävdes flera omgångar för att det skulle bli rätt
 			int numOfGuesses = 0;
 
 			while (result != ",CCCC")

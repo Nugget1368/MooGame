@@ -1,5 +1,4 @@
 ﻿namespace MooGame.Logistics;
-
 public class MooGameLogic
 {
     public string makeGoal()

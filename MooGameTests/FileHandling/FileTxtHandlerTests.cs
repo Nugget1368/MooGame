@@ -31,6 +31,7 @@ namespace FileTxtHandler.Tests
 			{
 				output.WriteLine($"{data.Name}#&#{data.NumOfGuesses}");
 			}
+			//Top 3 sparade resultat
 			Assert.AreEqual("Lisa", mockList[0].Name);
 			Assert.AreEqual("Link", mockList[1].Name);
 			Assert.AreEqual("Carro", mockList[2].Name);
@@ -51,7 +52,7 @@ namespace FileTxtHandler.Tests
 			{
 				Console.WriteLine($"{string.Format("{0,-9}{1,5:D}{2,9:F2}", playerData.Name, playerData.NumOfGames, playerData.PlayerScore(playerData.NumOfGuesses, playerData.NumOfGames))}");
 			}
-
+			//Hela topplistan
 			Assert.AreEqual("Lisa", results[0].Name);
 			Assert.AreEqual("Link", results[1].Name);
 			Assert.AreEqual("Carro", results[2].Name);
